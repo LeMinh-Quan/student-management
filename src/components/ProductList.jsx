@@ -1,18 +1,23 @@
-const ProductList = () => {
-    return (
-        <div>{
+import ProductCard from './ProductCard.jsx'
 
-            products.map((product) => (
-            <ProduvctCard
-            key={product.id}
-            name={product.namePD}
-            brand={product.brand}
-            price={product.price}
-            />
-        ))
-            }
-        </div>
-    )
+const ProductList = ({ products }) => {
+  return (
+    <div className="product-list">
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          id={product.id}
+          namePD={product.namePD}
+          brand={product.brand}
+          price={product.price}
+          stock={product.stock}
+          discount={product.discount}
+          image={product.image}
+          category={product.category}
+        />
+      ))}
+    </div>
+  )
 }
 
 export default ProductList

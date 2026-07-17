@@ -6,6 +6,11 @@
   --text-primary: #ffffffca;
 }
 
+/* Add global right margin to shift layout inwards */
+body {
+  margin-right: 20px;
+}
+
 .content {
   background: var(--primary-dark);
   min-height: 100vh;
@@ -64,4 +69,5 @@
     scroll-behavior: auto;
   }
 }
+body { overflow-x: hidden; }
 
