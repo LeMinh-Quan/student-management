@@ -1,0 +1,198 @@
+/* ========================================
+   TechStore Header — Self-contained Dark
+   No dependency on body/global styles
+   ======================================== */
+
+.site-header {
+  background: linear-gradient(135deg, #1a1f2e 0%, #242d3d 100%);
+  border-bottom: 1px solid #2a3142;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Top cyan accent bar */
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #00d9ff 30%,
+    #00f0ff 50%,
+    #00d9ff 70%,
+    transparent 100%);
+}
+
+/* Background ambient glow */
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -5%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.07) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: headerGlow 8s ease-in-out infinite;
+}
+
+@keyframes headerGlow {
+  0%, 100% { transform: translate(0px, 0px); }
+  50%       { transform: translate(-20px, 15px); }
+}
+
+/* Inner content wrapper */
+.site-header > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   Title
+   ======================================== */
+
+.site-title {
+  margin: 0 0 0.6rem 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+
+  /* Gradient text: white → cyan */
+  background: linear-gradient(120deg, #ffffffca 0%, #00d9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+.site-header:hover .site-title {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 14px rgba(0, 217, 255, 0.3));
+}
+
+/* ========================================
+   Subtitle
+   ======================================== */
+
+.site-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #a8adb5;
+  line-height: 1.5;
+  transition: color 300ms ease;
+}
+
+.site-header:hover .site-subtitle {
+  color: #00d9ff;
+}
+
+/* ========================================
+   Search Box
+   ======================================== */
+
+.search-box {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #3a4452;
+  border-radius: 6px;
+  background-color: #2a323f;
+  color: #ffffff;
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: #7a8a9a;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #00d9ff;
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.3);
+}
+
+.search-result {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #00d9ff;
+  font-weight: 500;
+  animation: slideIn 300ms ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1.75rem 2rem;
+  }
+  .site-title {
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+  .site-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 1.25rem 1.25rem;
+  }
+  .site-header::after {
+    display: none;
+  }
+  .site-title {
+    font-size: 1.6rem;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.4rem;
+  }
+  .site-subtitle {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header::after { animation: none; }
+  .site-title,
+  .site-subtitle      { transition: none; }
+  .site-header:hover .site-title {
+    transform: none;
+    filter: none;
+  }
+}
