@@ -21,6 +21,11 @@
   grid-column: 1 / -1;
 }
 
+/* Footer spans full width */
+.content > footer {
+  grid-column: 1 / -1;
+}
+
 /* Product cards */
 .content > div:not(:first-child) {
   height: 100%;
@@ -59,3 +64,4 @@
     scroll-behavior: auto;
   }
 }
+

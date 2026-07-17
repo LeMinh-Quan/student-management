@@ -1,4 +1,5 @@
 import Header from './components/hearder.jsx'
+import Footer from './components/Footer.jsx'
 import PD from './components/ProductCard.jsx'
 import products from './data/products'
 import './App.css'
@@ -16,9 +17,14 @@ function App(){
                     namePD={p.namePD}
                     brand={p.brand}
                     price={p.price}
+                    category={p.category}
+                    stock={p.stock}
+                    discount={p.discount}
+                    image={p.image}
                 />
             ))}
 
+            <Footer />
         </div>
     )
 }
